@@ -1,0 +1,69 @@
+@Backend_HostAddress = http://localhost:5282
+
+GET {{Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### GET Todas las marcas
+GET {{Backend_HostAddress}}/api/Brand
+Accept: application/json
+
+### GET Marca por ID (Caso éxito)
+GET {{Backend_HostAddress}}/api/Brand/1
+Accept: application/json
+
+### GET Marca por ID (Caso error: 404 Not Found)
+GET {{Backend_HostAddress}}/api/Brand/999
+Accept: application/json
+
+### GET Cervezas de una marca (Reto 3)
+GET {{Backend_HostAddress}}/api/Brand/1/beers
+Accept: application/json
+
+### POST Crear Marca (Caso éxito: 201 Created)
+POST {{Backend_HostAddress}}/api/Brand
+Content-Type: application/json
+
+{
+  "name": "Corona"
+}
+
+### POST Crear Marca (Caso error: Validación de longitud corta)
+POST {{Backend_HostAddress}}/api/Brand
+Content-Type: application/json
+
+{
+  "name": "A"
+}
+
+### POST Crear Marca (Caso error: Nombre vacío)
+POST {{Backend_HostAddress}}/api/Brand
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+### POST Crear Marca (Caso error: Nombre duplicado - Reto 1)
+POST {{Backend_HostAddress}}/api/Brand
+Content-Type: application/json
+
+{
+  "name": "Corona"
+}
+
+### PUT Actualizar Marca (Caso éxito: 200 OK)
+PUT {{Backend_HostAddress}}/api/Brand/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Heineken"
+}
+
+### DELETE Eliminar Marca con cervezas asociadas (Caso error: 409 Conflict - Reto 2)
+DELETE {{Backend_HostAddress}}/api/Brand/1
+
+### DELETE Eliminar Marca inexistente (Caso error: 404 Not Found)
+DELETE {{Backend_HostAddress}}/api/Brand/999
+
+###

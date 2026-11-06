@@ -1,0 +1,13 @@
+## .NET build artifacts
+bin/
+obj/
+
+## IDE and editor files
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+## User-specific / local configuration
+appsettings.Development.json
